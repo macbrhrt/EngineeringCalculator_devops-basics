@@ -22,7 +22,12 @@ namespace ECalc_Core
             if (number < 0) throw new ArgumentOutOfRangeException("Неможливо розрахувати квадратний корень з від'ємного числа");
             return Math.Sqrt(number);
         }
-        public double Logarithm(double number, double baseNum) => Math.Log(number, baseNum);
+        public double Logarithm(double number, double baseNum)
+        {
+            if (baseNum <= 0 || baseNum == 1) throw new ArgumentException("Основа логарифма повинна бути додатнім числом і не дорівнювати 1");
+            if (number <= 0) throw new ArgumentException("Значення логарифма повинно бути додатнім");
+            return Math.Log(number, baseNum);
+        }
         public double NaturalLogarithm(double number) => Math.Log(number);
         public double Sine(double angle) => Math.Sin(angle);
         public double Cosine(double angle) => Math.Cos(angle);
